@@ -19,7 +19,9 @@
 <div class="product-list-container">
 <% for(Product product : productList) { %>
 <div class="product-list-wrapper">
+<a href="${pageContext.request.contextPath}/product/detail?productId=<%= product.getProductId() %>">
 <img src="${pageContext.request.contextPath}/images/<%= product.getImageFile() %>" class="product-image">
+</a>
 <div class="product-list-info">
 <%= product.getProductName() %><br>
 ￥<%= nf.format(product.getPrice()) %>

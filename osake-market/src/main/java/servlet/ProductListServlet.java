@@ -24,9 +24,51 @@ public class ProductListServlet extends HttpServlet {
 	 * dpGetメソッド
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// リクエストパラメータを取得
+		request.setCharacterEncoding("UTF-8");
+		String categoryName = request.getParameter("categoryName");
+		
 		ProductListLogic logic = new ProductListLogic();
 		List<Product> productList = new ArrayList<>();
-		productList = logic.findAll();
+		
+		// リクエストパラメータがnullなら商品一覧を取得する
+		if (categoryName == null) {
+			productList = logic.findAll();			
+		} else {
+			switch(categoryName) {
+				case "wine":
+					categoryName = "ワイン";
+					break;
+				case "sparklingWine":
+					categoryName = "スパークリングワイン";
+					break;
+				case "whisky":
+					categoryName = "ウイスキー";
+					break;
+				case "brandy":
+					categoryName = "ブランデー";
+					break;
+				case "shochu":
+					categoryName = "焼酎";
+					break;
+				case "japaneseSake":
+					categoryName = "日本酒";
+					break;
+				case "liqueur":
+					categoryName = "リキュール";
+					break;
+				case "beer":
+					categoryName = "ビール";
+					break;
+				case "food":
+					categoryName = "おつまみ";
+					break;
+				default:
+					categoryName = null;
+					break;
+			}
+			productList = logic.findByCategoryName(categoryName);
+		}
 		if(productList != null) {	// 商品リスト一覧が見つかった場合
 			// リクエストスコープに格納してフォワード
 			request.setAttribute("productList", productList);
@@ -39,5 +81,4 @@ public class ProductListServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 	}
-
 }

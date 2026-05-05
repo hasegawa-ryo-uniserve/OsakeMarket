@@ -1,5 +1,6 @@
 dao\ProductsDAO.class
 test\LoginLogicTest.class
+.gitignore
 test\UsersDAOTest.class
 servlet\ResetPasswordUpdateCompleteServlet.class
 servlet\LoginServlet.class

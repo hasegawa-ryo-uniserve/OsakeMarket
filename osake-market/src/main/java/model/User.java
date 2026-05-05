@@ -435,5 +435,4 @@ public class User {
 		this.delFlag = delFlag;
 	}
 	
-	
 }

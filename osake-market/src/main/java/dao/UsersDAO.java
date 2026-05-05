@@ -424,4 +424,88 @@ public class UsersDAO {
 		}
 		return true;
 	}
+	
+	/**
+	 * ユーザーIDをもとにユーザーを取得する
+	 * 
+	 * @param userId ユーザーID
+	 * @return ユーザー
+	 * @throws ClassNotFoundException 
+	 *         ドライバクラスが見つからなかった場合 
+	 * @throws SQLException 
+	 *         DB接続に失敗した場合 
+	 */
+	public User findByUserId(int inputUserId) {
+		User user = null;
+		// JDBCドライバを読み込む
+		try {
+			Class.forName(DRIVER);
+		} catch (ClassNotFoundException e) {
+			throw new IllegalStateException("JDBCドライバを読み込めませんでした");
+		}
+		// データベースへ接続
+		try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
+
+			// SQLを準備
+			String sql = "SELECT user_id, sei, mei, birthday, gender, postal_code, prefecture,"
+					+ "address, building, phone_number, mail, password, token, expire, create_date, mod_date,"
+					+ "del_date, del_flag "
+					+ "FROM users "
+					+ "WHERE user_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, inputUserId);
+
+			// SQLを実行し、結果表を取得
+			ResultSet rs = pStmt.executeQuery();
+
+			if (rs.next()) {
+				// ユーザーが存在したらデータを取得
+				// そのユーザーを表すUserインスタンスを生成
+				Integer userId = rs.getInt("user_id");
+				String sei = rs.getString("sei");
+				String mei = rs.getString("mei");
+				Timestamp birthdayTs = rs.getTimestamp("birthday");
+			    LocalDate birthday = (birthdayTs != null) ? birthdayTs.toLocalDateTime().toLocalDate() : null;
+				int genderInt = rs.getInt("gender");
+				Gender gender = switch (genderInt) {
+				case 1 -> Gender.MALE;
+				case 2 -> Gender.FEMALE;
+				default -> Gender.OTHER;
+				};
+				String postalCode = rs.getString("postal_code");
+				String prefecture = rs.getString("prefecture");
+				String address = rs.getString("address");
+				String building = rs.getString("building");
+				String phoneNumber = rs.getString("phone_number");
+				String mail = rs.getString("mail");
+				String password = rs.getString("password");
+				String token = rs.getString("token");
+				//				LocalDateTime expire = rs.getTimestamp("expire").toLocalDateTime();
+				Timestamp ts = rs.getTimestamp("expire");
+				LocalDateTime expire = (ts != null) ? ts.toLocalDateTime() : null;
+				ts = rs.getTimestamp("create_date");
+				LocalDateTime createDate = (ts != null) ? ts.toLocalDateTime() : null;
+
+				ts = rs.getTimestamp("mod_date");
+				LocalDateTime modDate = (ts != null) ? ts.toLocalDateTime() : null;
+
+				ts = rs.getTimestamp("del_date");
+				LocalDateTime delDate = (ts != null) ? ts.toLocalDateTime() : null;
+				int delFlagInt = rs.getInt("del_flag");
+				boolean delFlag = false;
+				if (delFlagInt == 0) {
+					delFlag = false;
+				} else if (delFlagInt == 1) {
+					delFlag = true;
+				}
+				user = new User(userId, sei, mei, birthday, gender, postalCode, prefecture, address, building,
+						phoneNumber,
+						mail, password, token, expire, createDate, modDate, delDate, delFlag);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return user;
+	}
 }

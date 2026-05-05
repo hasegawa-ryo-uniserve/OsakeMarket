@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 商品エンティティ
@@ -42,6 +43,9 @@ public class Product {
 	// 画面用オプション
 	/** カテゴリ―名 */
 	private String categoryName;
+	
+	/** レビューリスト */
+	private List<Review> reviewList;
 	
 	/**
 	 * コンストラクタ(引数無し)
@@ -202,6 +206,24 @@ public class Product {
 	 */
 	public void setImageFile(String imageFile) {
 		this.imageFile = imageFile;
+	}
+	
+	/**
+	 * レビューリストを取得
+	 * 
+	 * @return レビューリスト
+	 */
+	public List<Review> getReviewList() {
+		return reviewList;
+	}
+	
+	/**
+	 * レビューリストを設定
+	 * 
+	 * @param reviewList レビューリスト
+	 */
+	public void setReviewList(List<Review> reviewList) {
+		this.reviewList = reviewList;
 	}
 	
 	/**

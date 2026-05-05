@@ -33,7 +33,7 @@
 </div>
 </form>
 <button>
-<a href="${pageContext.request.contextPath}/index.jsp">戻る</a>
+<a href="${pageContext.request.contextPath}/login">戻る</a>
 </button>
 </div>
 </div>

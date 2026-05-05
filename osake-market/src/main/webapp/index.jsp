@@ -20,7 +20,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 <div class="wrapper">
 <p>
 	日本の銘酒をあなたに<br>
-	厳選されたクラフト酒をお届けします。
+	厳選されたクラフト酒をお届けします
 </p>
 <a href="${pageContext.request.contextPath}/product/list">
 <button>
@@ -31,7 +31,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 </div>
 <h2 style="text-align: center; font-weight: normal; margin: 50px 0;">カテゴリから選ぶ</h2>
 <div class="home-category-wrapper">
-<a href="${pageContext.request.contextPath}/product/list?category=wine" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=wine" class="home-category-link">
 <div class="home-category-inner-wrapper">
 <img src="${pageContext.request.contextPath}/images/wine.png" class="wine">
 <div class="home-category-name-wrapper">
@@ -40,7 +40,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 </div>
 </div>
 </a>
-<a href="${pageContext.request.contextPath}/product/list?category=sparklingWine" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=sparklingWine" class="home-category-link">
 <div class="home-category-inner-wrapper">
 <img src="${pageContext.request.contextPath}/images/sparkling_wine.png" class="sparklingWine">
 <div class="home-category-name-wrapper">
@@ -49,7 +49,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 </div>
 </div>
 </a>
-<a href="${pageContext.request.contextPath}/product/list?category=whisky" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=whisky" class="home-category-link">
 <div class="home-category-inner-wrapper">
 <img src="${pageContext.request.contextPath}/images/whisky.png" class="whisky">
 <div class="home-category-name-wrapper">
@@ -58,7 +58,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 </div>
 </div>
 </a>
-<a href="${pageContext.request.contextPath}/product/list?category=brandy" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=brandy" class="home-category-link">
 <div class="home-category-inner-wrapper">
 <img src="${pageContext.request.contextPath}/images/brandy.png" class="brandy">
 <div class="home-category-name-wrapper">
@@ -67,25 +67,25 @@ User loginUser = (User)session.getAttribute("loginUser");
 </div>
 </div>
 </a>
-<a href="${pageContext.request.contextPath}/product/list?category=syouchu" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=shochu" class="home-category-link">
 <div class="home-category-inner-wrapper">
-<img src="${pageContext.request.contextPath}/images/syouchu.png" class="syouchu">
+<img src="${pageContext.request.contextPath}/images/syouchu.png" class="shochu">
 <div class="home-category-name-wrapper">
 <span class="category-alpha">SHOCHU</span>
 <span class="category-ja">焼酎</span>
 </div>
 </div>
 </a>
-<a href="${pageContext.request.contextPath}/product/list?category=nihonsyu" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=japaneseSake" class="home-category-link">
 <div class="home-category-inner-wrapper">
-<img src="${pageContext.request.contextPath}/images/nihonsyu.png" class="nihonsyu">
+<img src="${pageContext.request.contextPath}/images/nihonsyu.png" class="japaneseSake">
 <div class="home-category-name-wrapper">
 <span class="category-alpha">JAPANESE SAKE</span>
 <span class="category-ja">日本酒</span>
 </div>
 </div>
 </a>
-<a href="${pageContext.request.contextPath}/product/list?category=liqueur" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=liqueur" class="home-category-link">
 <div class="home-category-inner-wrapper">
 <img src="${pageContext.request.contextPath}/images/liqueur.png" class="liqueur">
 <div class="home-category-name-wrapper">
@@ -94,7 +94,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 </div>
 </div>
 </a>
-<a href="${pageContext.request.contextPath}/product/list?category=beer" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=beer" class="home-category-link">
 <div class="home-category-inner-wrapper">
 <img src="${pageContext.request.contextPath}/images/beer.png" class="beer">
 <div class="home-category-name-wrapper">
@@ -103,7 +103,7 @@ User loginUser = (User)session.getAttribute("loginUser");
 </div>
 </div>
 </a>
-<a href="${pageContext.request.contextPath}/product/list?category=otsumami" class="home-category-link">
+<a href="${pageContext.request.contextPath}/product/list?categoryName=food" class="home-category-link">
 <div class="home-category-inner-wrapper">
 <img src="${pageContext.request.contextPath}/images/otsumami.png" class="otsumami">
 <div class="home-category-name-wrapper">
