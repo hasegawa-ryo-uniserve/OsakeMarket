@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
-body {
+html, body {
+	height: 100%;
 	margin: 0;
 	padding: 0;
 }
@@ -81,12 +82,16 @@ header h1 a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-/*	padding-top: 5px;*/
+	padding-top: 0px;
 }
 .cartImg {
 	width: 50px;
 	height: 50px;
 /*	object-fit: contain;*/
+}
+.cart a {
+	text-decoration: none;
+	color: black;
 }
 .user {
 	display: flex;
@@ -101,6 +106,7 @@ header h1 a {
 }
 .user a {
 	text-decoration: none;
+	color: black;
 }
 
 
@@ -542,6 +548,17 @@ header h1 a {
 }
 
 /* 商品一覧 */
+.product-list-filter-container form {
+	display: flex;
+	flex-direction: row;
+	margin-left: 5%;
+	margin-top: 2%;
+	gap: 0.8%;
+}
+.product-list-filter-form-submit {
+	
+	cursor: pointer;
+}
 .product-list-container {
     display: flex;
     flex-wrap: wrap;
@@ -561,7 +578,7 @@ header h1 a {
 	height: 280px;
 	border: solid 1px;
 	padding: 10px;
-	padding-bottom: 5px;
+	padding-bottom: 15px;
 }
 .product-image {
 	width: 100%;
@@ -579,10 +596,24 @@ header h1 a {
 	display: flex;
 	flex-direction: row;
 	margin-top: 5px;
+	align-items: center;
+    gap: 10px;
+    width: 100%; 
 }
-.heart-and-button-wrapper button {
-	margin-left: 10px;
-	width: 80%;
+.heart-and-button-wrapper form {
+    display: inline-flex;
+    margin: 0;
+    flex-grow: 1;
+}
+.heart-and-button-wrapper form button {
+	height: 35px;
+	cursor: pointer;
+	background-color: black;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	flex-grow: 1; 
+	width: 100%;
 }
 
 /* 商品詳細画面 */

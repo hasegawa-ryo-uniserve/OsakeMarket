@@ -66,16 +66,14 @@ public class ProductListServlet extends HttpServlet {
 		}
 		
 		// --- DB取得後に空かどうかを判定 ---
-		if (productList != null && !productList.isEmpty()) {
+//		if (productList != null && !productList.isEmpty()) {
 			// リクエストスコープに格納してフォワード
-			request.setAttribute("productList", productList);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productList.jsp");
-			dispatcher.forward(request, response);			
-		} else { // 商品一覧が見つからなかった場合
+			request.setAttribute("productList", productList);		
+//		} else { // 商品一覧が見つからなかった場合
 			// エラーメッセージをリクエストスコープに格納してフォワード
-			request.setAttribute("errorMsg", "商品一覧が見つかりませんでした");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
-			dispatcher.forward(request, response);
-		}
+//			request.setAttribute("noList", "商品一覧が見つかりませんでした");
+//		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productList.jsp");
+		dispatcher.forward(request, response);
 	}
 }

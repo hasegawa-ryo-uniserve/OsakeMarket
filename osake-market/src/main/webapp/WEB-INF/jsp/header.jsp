@@ -25,8 +25,10 @@ User loginUser = (User)session.getAttribute("loginUser");
 					<span>お気に入り</span>
 				</li>
 				<li class="cart">
-					<img src="${pageContext.request.contextPath}/images/cart.png" class="cartImg">
-					<span>カート</span>
+					<a href="${pageContext.request.contextPath}/cart" class="cart">
+						<img src="${pageContext.request.contextPath}/images/cart.png" class="cartImg">
+						<span>カート</span>
+					</a>
 				</li>
 				<li class="user">
 					<% if (loginUser == null) { %>
