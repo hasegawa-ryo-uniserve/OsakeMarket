@@ -4,6 +4,11 @@
 <%
 	List<Product> productList = (List<Product>)request.getAttribute("productList");
 	NumberFormat nf = NumberFormat.getInstance();
+	
+	// リクエストパラメータを取得
+    String selectedCategory = request.getParameter("categoryName");
+    String inputProductName = request.getParameter("productName");
+    String selectedSort = request.getParameter("sort");
 %>
 <!DOCTYPE html>
 <html>
@@ -16,6 +21,27 @@
 <header class="page-header wrapper">
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 </header>
+<form action="${pageContext.request.contextPath}/product/list" method="get">
+<select name="categoryName">
+<option value="" <%= (selectedCategory == null || selectedCategory.isEmpty()) ? "selected" : "" %>></option>
+<option value="wine" <%= "wine".equals(selectedCategory) ? "selected" : "" %>>ワイン</option>
+<option value="sparklingWine" <%= "sparklingWine".equals(selectedCategory) ? "selected" : "" %>>スパークリングワイン</option>
+<option value="whisky" <%= "whisky".equals(selectedCategory) ? "selected" : "" %>>ウイスキー</option>
+<option value="brandy" <%= "brandy".equals(selectedCategory) ? "selected" : "" %>>ブランデー</option>
+<option value="shochu" <%= "shochu".equals(selectedCategory) ? "selected" : "" %>>焼酎</option>
+<option value="japaneseSake" <%= "japaneseSake".equals(selectedCategory) ? "selected" : "" %>>日本酒</option>
+<option value="liqueur" <%= "liqueur".equals(selectedCategory) ? "selected" : "" %>>リキュール</option>
+<option value="beer" <%= "beer".equals(selectedCategory) ? "selected" : "" %>>ビール</option>
+<option value="food" <%= "food".equals(selectedCategory) ? "selected" : "" %>>おつまみ</option>
+</select>
+<input type="text" name="productName" placeholder="商品名で検索" value="<%= (inputProductName != null) ? inputProductName : "" %>">
+<select name="sort">
+<option value="new" <%= "new".equals(selectedSort) ? "selected" : "" %>>新着順</option>
+<option value="old" <%= "old".equals(selectedSort) ? "selected" : "" %>>古い順</option>
+<option value="name" <%= "name".equals(selectedSort) ? "selected" : "" %>>名前順</option>
+</select>
+</select><input type="submit" value="検索">
+</form>
 <div class="product-list-container">
 <% for(Product product : productList) { %>
 <div class="product-list-wrapper">

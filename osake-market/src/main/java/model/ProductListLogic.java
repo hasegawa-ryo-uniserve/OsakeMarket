@@ -18,6 +18,37 @@ public class ProductListLogic {
 	public List<Product> findByCategoryName(String categoryName) {
 		ProductsDAO dao = new ProductsDAO();
 		List<Product> productList = new ArrayList<>();
+		switch(categoryName) {
+		case "wine":
+			categoryName = "ワイン";
+			break;
+		case "sparklingWine":
+			categoryName = "スパークリングワイン";
+			break;
+		case "whisky":
+			categoryName = "ウイスキー";
+			break;
+		case "brandy":
+			categoryName = "ブランデー";
+			break;
+		case "shochu":
+			categoryName = "焼酎";
+			break;
+		case "japaneseSake":
+			categoryName = "日本酒";
+			break;
+		case "liqueur":
+			categoryName = "リキュール";
+			break;
+		case "beer":
+			categoryName = "ビール";
+			break;
+		case "food":
+			categoryName = "おつまみ";
+			break;
+		default:
+			break;
+		}
 		productList = dao.findByCategoryName(categoryName);
 		if(productList == null) {
 			return null;
